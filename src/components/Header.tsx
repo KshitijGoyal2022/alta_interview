@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import Image from 'next/image'
+import {useEffect} from 'react'
+import {useSelector,useDispatch} from 'react-redux'
+import {fetchApiData} from '../redux/store/actions/apiDataSlice'
+
 import {BiFork} from 'react-icons/bi'
 import {AiOutlineLock} from 'react-icons/ai'
 
@@ -21,7 +25,7 @@ const CollectionTitle = styled.div`
     font-size: 10px;
     color: #A9A9A9;
     font-weight: bold;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
 `
 const RecipeSubtitle = styled.div`
     font-size: 10px;
@@ -47,6 +51,13 @@ const CenteredContentContainer = styled.div`
 
 
 const Header = () => {
+    const dispatch = useDispatch();
+    useEffect(()=>{
+
+        dispatch(fetchApiData())
+    
+      },[])
+
   return (
     <GridContainer> 
         <AcrumiContainer>

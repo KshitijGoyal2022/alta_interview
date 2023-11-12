@@ -6,8 +6,8 @@ const FoodCard = () => {
     const dispatch = useDispatch();
     return (
         <div>
-            Hello
-            <button onClick={()=>dispatch(fetchApiData())}>Get Food info</button>
+            {/* Hello
+            <button onClick={()=>dispatch(fetchApiData())}>Get Food info</button> */}
         </div>
     );
 };
