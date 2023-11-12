@@ -1,13 +1,30 @@
-import {useSelector,useDispatch} from 'react-redux'
-import {fetchApiData} from '../redux/store/actions/apiDataSlice'
 import Image from 'next/image'
 
+import styled from 'styled-components'
+
+const CardContainer = styled.div`
+   background-image: url('/agrumi.png');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+
+   height: 300px;
+   width: 250px;
+   border-radius: 20px;
+
+   margin : 20px;
+
+`
+
+
 const FoodCard = () => {
-    const dispatch = useDispatch();
+  
     return (
         <div>
-            {/* Hello
-            <button onClick={()=>dispatch(fetchApiData())}>Get Food info</button> */}
+            <CardContainer>
+
+            </CardContainer>
+            
         </div>
     );
 };

@@ -1,30 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 interface Creator {
-  href: string;
-  id: string;
-  username: string;
-  mugshot: string;
-  name: string;
-  verified: boolean;
-  is_you: boolean;
-  is_staff: boolean;
-  following: number;
-  followers: number;
-  is_following: boolean;
-  is_following_too: number;
-  groups: string[];
-  count_recipes: number;
 }
-
 interface Image {
-  original: {
-    height: number;
-    url: string;
-    width: number;
-    pk: number;
-    blurhash: string;
-  };
 }
 
 interface Item {
@@ -54,7 +32,7 @@ const initialState: ApiDataState = {
 
 // Action
 export const fetchApiData = createAsyncThunk('foodItems', async () => {
-  const response = await fetch('https://staging.altacucina.co/v1/collections/byslug/primi-piatti-veloci-2/');
+  const response = await fetch('https://staging.altacucina.co/v1/collections/byslug/primi-piatti-veloci-2/?expand=items');
   const data = await response.json();
   return data;
 });
