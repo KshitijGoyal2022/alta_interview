@@ -1,13 +1,18 @@
 import { Inter } from 'next/font/google'
+
+import Header from '@/components/Header'
+import MiddleBar from '@/components/MiddleBar'
+import FoodSection from '@/components/FoodSection'
 import FoodCard from '@/components/FoodCard'
 
 const inter = Inter({ subsets: ['latin'] })
 
-import React from 'react'
-
 const Home = () => {
   return (
     <main>
+        <Header />
+        <MiddleBar />
+        <FoodSection />
         <FoodCard />
 
     </main>
