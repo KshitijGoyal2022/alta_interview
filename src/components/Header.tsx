@@ -39,6 +39,7 @@ const AcrumiImageContainer = styled.div`
 //Contains the info on the right side of the header
 const ElipsisIcon = styled.div`
     margin-top: 25px;
+    margin-right: 25px;
     height: 10px;
     width: 10px;
     
@@ -129,8 +130,8 @@ const Header = () => {
                         </RowContainer>
                     </div>
                     <div>
-                        <ElipsisIcon>
-                            <AiOutlineEllipsis />
+                        <ElipsisIcon >
+                            <AiOutlineEllipsis size={25} color="grey"/>
                         </ElipsisIcon>
                     </div>
                 </RowEndContainer>
