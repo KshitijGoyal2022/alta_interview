@@ -1,7 +1,9 @@
 import FoodCard from "./FoodCard"
 import styled from 'styled-components'
 
-import {useSelector} from 'react-redux'
+import {useEffect} from 'react'
+import {useSelector,useDispatch} from 'react-redux'
+import {fetchApiData} from '../redux/store/actions/apiDataSlice'
 
 const GridContainer = styled.div`
     display: grid;
@@ -14,8 +16,17 @@ const GridContainer = styled.div`
 
 
 const FoodSection = () => {
+  const dispatch = useDispatch();
 
   const { status, data } = useSelector((state) => state.apiData);
+
+    try{
+      useEffect(()=>{
+          dispatch(fetchApiData())
+        },[dispatch])
+    }catch(e){
+      return <div>e</div>
+    }
 
   const foodData = useSelector((state) => {
     console.log("state..." , state.apiData)

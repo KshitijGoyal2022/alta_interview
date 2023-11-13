@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 import Image from 'next/image'
-import {useEffect} from 'react'
-import {useSelector,useDispatch} from 'react-redux'
-import {fetchApiData} from '../redux/store/actions/apiDataSlice'
 
 import {BiFork} from 'react-icons/bi'
 import {AiOutlineLock} from 'react-icons/ai'
 import {AiOutlineEllipsis}  from 'react-icons/ai'
+import {FaCircle} from 'react-icons/fa'
 
 //Splits the header into 2 columns (2 grids - image and info)
 const GridContainer = styled.div`
@@ -52,6 +50,7 @@ const FoodCollectionTitle = styled.div`
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
     margin-top: 10px;
+    margin-right: 10px;
 `
 //Contains the title of a recipe in the small path after the food collection title - in this case (Ricette con gli agrumi - Recipes with citrus fruits)
 const RecipeSubtitle = styled.div`
@@ -91,25 +90,24 @@ const RowContainer = styled.div`
         flex-direction: column;
     }
 `
+//Note: I need to rename this component - time to sleep now
+const RowEndContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 10px;
+`
+
+//Note: I need to rename this component - time to sleep now
+const SmallContainer = styled.div`
+    color: grey;
+    margin-right: 20px;
+    margin-left: 20px;
+`
+
 
 
 const Header = () => {
-    const dispatch = useDispatch();
-    const { status, data } = useSelector((state) => state.apiData);
-
-    try{
-        useEffect(()=>{
-            dispatch(fetchApiData())
-          },[dispatch])
-    }catch(e){
-        return <div>e</div>
-    }
-    
-
-      if (status === 'loading' || status === 'idle') {
-        return <div>Loading...</div>;
-      }
-
   return (
     <GridContainer> 
         <AcrumiImageContainer>
@@ -118,40 +116,44 @@ const Header = () => {
 
         <div>
 
-            <RowContainer>
-                <div>
+            
+                <RowEndContainer>
                     <div>
-                        <FoodCollectionTitle>
-                            <p>RACCOLTE</p> 
-                        </FoodCollectionTitle>
-                        <RecipeSubtitle>
-                            <p>/ RICETTE CON GLI AGRUMI</p>
-                        </RecipeSubtitle>
+                        <RowContainer>
+                            <FoodCollectionTitle>
+                                <p>RACCOLTE</p> 
+                            </FoodCollectionTitle>
+                            <RecipeSubtitle>
+                                <p>/  RICETTE CON GLI AGRUMI</p>
+                            </RecipeSubtitle>
+                        </RowContainer>
                     </div>
                     <div>
                         <ElipsisIcon>
                             <AiOutlineEllipsis />
                         </ElipsisIcon>
                     </div>
-                </div>
-            </RowContainer>
+                </RowEndContainer>
+            
 
             <CenteredContentContainer>
                 <RecipeTitle>
                     Ricette con gli agrumi
                 </RecipeTitle>
                 <RowContainer>
-                    <div>
-                        <BiFork />
+                    <SmallContainer>
+                        <BiFork color="grey" />
                         12 Ricette
-                    </div>
+                    </SmallContainer>
                     <div>
-                        <AiOutlineLock />
-                        Privata
+                        <FaCircle size={4} color="grey" />
                     </div>
+                    <SmallContainer>
+                        <AiOutlineLock color="grey" />
+                        Privata
+                    </SmallContainer>
                 </RowContainer>
             </CenteredContentContainer>
-
         </div>
     </GridContainer>
   ) 
