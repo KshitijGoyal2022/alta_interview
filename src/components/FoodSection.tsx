@@ -15,20 +15,31 @@ const GridContainer = styled.div`
 
 const FoodSection = () => {
 
+  const { status, data } = useSelector((state) => state.apiData);
+
   const foodData = useSelector((state) => {
     console.log("state..." , state.apiData)
     return state.apiData
   })
 
+  
+  if (status === 'loading' || status === 'idle') {
+    return <div>Loading...</div>;
+  }
+
   return (
+      <div>
 
-      <GridContainer>
-
-        {foodData.data.items.map((ele)=>(
+        <GridContainer>
+          {foodData && foodData.data.items.map((ele)=>(
                 <FoodCard title={ele.title} imgUrl={ele.image.original.url} />
-                  // <p>{ele.image.original.url}</p>
-      ))}
-      </GridContainer >
+                    // <p>{ele.image.original.url}</p>
+        ))}
+        </GridContainer >
+   
+
+
+      </div> 
 
   )
 }

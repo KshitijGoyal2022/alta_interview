@@ -95,11 +95,20 @@ const RowContainer = styled.div`
 
 const Header = () => {
     const dispatch = useDispatch();
-    useEffect(()=>{
+    const { status, data } = useSelector((state) => state.apiData);
 
-        dispatch(fetchApiData())
+    try{
+        useEffect(()=>{
+            dispatch(fetchApiData())
+          },[dispatch])
+    }catch(e){
+        return <div>e</div>
+    }
     
-      },[])
+
+      if (status === 'loading' || status === 'idle') {
+        return <div>Loading...</div>;
+      }
 
   return (
     <GridContainer> 
