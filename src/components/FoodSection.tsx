@@ -43,7 +43,7 @@ const FoodSection = () => {
 
         <GridContainer>
           {foodData && foodData.data.items.map((ele)=>(
-                <FoodCard title={ele.title} imgUrl={ele.image.original.url} />
+                <FoodCard title={ele.title} cardUrl={ele.image.original.url} mugshotUrl={foodData.data.creator.mugshot} />
                     // <p>{ele.image.original.url}</p>
         ))}
         </GridContainer >

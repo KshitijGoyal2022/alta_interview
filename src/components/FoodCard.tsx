@@ -14,12 +14,13 @@ const RowContainer = styled.div`
 
 
 interface FoodCardProps{
-    imgUrl: string,
+    cardUrl: string,
     title: string,
+    mugshotUrl: string,
 }
 
 const CardContainer = styled.div`
-   background-image: url(${props => props.imgUrl});
+   background-image: url(${props => props.cardUrl});
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
@@ -35,19 +36,35 @@ const CardContainer = styled.div`
 const TitleContainer = styled.div`
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
-    margin-left: 25px;  
+    margin-left: 25px; 
+    min-height: 70px;
+`
+
+const ProfilePicture = styled.div`
+   background-image: url(${props => props.mugshotUrl});
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+
+   height: 40px;
+   width: 40px;
+   border-radius: 50%;
+
+   margin-left: 15px;
 
 `
 
-const FoodCard = ({imgUrl, title}:FoodCardProps) => {
+const FoodCard = ({cardUrl, title, mugshotUrl}:FoodCardProps) => {
   
     return (
         <div>
-            <CardContainer imgUrl={imgUrl} />
+            <CardContainer cardUrl={cardUrl} />
 
             <TitleContainer>
                 {title}
             </TitleContainer>
+
+            <ProfilePicture mugshotUrl ={mugshotUrl} />
 
         </div>
     );
