@@ -20,6 +20,7 @@ interface FoodCardProps{
     title: string,
     mugshotUrl: string,
     userName: string,
+    isVerified : boolean;
 }
 
 const CardContainer = styled.div`
@@ -40,7 +41,7 @@ const TitleContainer = styled.div`
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
     margin-left: 25px; 
-    min-height: 70px;
+    min-height: 80px;
 `
 
 const ProfilePicture = styled.div`
@@ -49,11 +50,11 @@ const ProfilePicture = styled.div`
    background-position: center;
    background-repeat: no-repeat;
 
-   height: 40px;
-   width: 40px;
+   height: 30px;
+   width: 30px;
    border-radius: 50%;
 
-   margin-left: 15px;
+   margin-left: 25px;
 `
 const UserNameStyle = styled.div`
 
@@ -62,11 +63,11 @@ const UserNameStyle = styled.div`
     font-size: 14px;
     color: grey;
     margin-right: 10px;
-    margin-left: 5px;
+    margin-left: 8px;
     
 `
 
-const FoodCard = ({cardUrl, title, mugshotUrl,userName}:FoodCardProps) => {
+const FoodCard = ({cardUrl, title, mugshotUrl,userName, isVerified}:FoodCardProps) => {
   
     return (
         <div>
@@ -79,7 +80,8 @@ const FoodCard = ({cardUrl, title, mugshotUrl,userName}:FoodCardProps) => {
            <RowContainer>
                 <ProfilePicture mugshotUrl ={mugshotUrl} />
                 <UserNameStyle>{userName}</UserNameStyle>
-                <MdVerified color="dodgerblue" size={14}/>
+                {isVerified && <MdVerified color="dodgerblue" size={14}/>}
+                
            </RowContainer>
             
         </div>

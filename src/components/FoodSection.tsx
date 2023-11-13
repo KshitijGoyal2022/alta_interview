@@ -1,9 +1,10 @@
 import FoodCard from "./FoodCard"
 import styled from 'styled-components'
 
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {fetchApiData} from '../redux/store/actions/apiDataSlice'
+import { fetchCreatorData } from "@/redux/store/actions/creatorInfoDataSlice"
 
 const GridContainer = styled.div`
     display: grid;
@@ -17,39 +18,46 @@ const GridContainer = styled.div`
 
 const FoodSection = () => {
   const dispatch = useDispatch();
-
   const { status, data } = useSelector((state) => state.apiData);
+  // const {creatorStatus, creatorData } = useSelector((creatorState)=>creatorState.creatorInfoData)
 
-    try{
-      useEffect(()=>{
-          dispatch(fetchApiData())
-        },[dispatch])
-    }catch(e){
-      return <div>e</div>
-    }
+    useEffect(() => {
+      try {
+        dispatch(fetchApiData());
+      } catch (error) {
+        console.error(error);
+      }
+    }, []);
 
   const foodData = useSelector((state) => {
-    console.log("state..." , state.apiData)
     return state.apiData
   })
-
   
-  if (status === 'loading' || status === 'idle') {
+  
+  while (status === 'loading' || status === 'idle' ) {
     return <div>Loading...</div>;
   }
 
+  // if (status === 'succeeded' && foodData.data && foodData.data.items) {
+  //   foodData.data.items.forEach((ele)=>{
+  //     dispatch(fetchCreatorData(ele.creator));
+  //   })}
+
   return (
       <div>
-
         <GridContainer>
           {foodData && foodData.data.items.map((ele)=>(
-                <FoodCard title={ele.title} cardUrl={ele.image.original.url} mugshotUrl={foodData.data.creator.mugshot} userName={foodData.data.creator.name} />
-                    // <p>{ele.image.original.url}</p>
+                <FoodCard 
+                  key={ele.id} 
+                  title={ele.title} 
+                  cardUrl={ele.image.original.url} 
+                  mugshotUrl={ele.creator.mugshot} 
+                  userName={ele.creator.name}
+                  isVerified={ele.creator.verified} />
+  
         ))}
         </GridContainer >
    
-
-
       </div> 
 
   )

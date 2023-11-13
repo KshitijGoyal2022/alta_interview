@@ -32,7 +32,7 @@ const initialState: ApiDataState = {
 
 // Action
 export const fetchApiData = createAsyncThunk('foodItems', async () => {
-  const response = await fetch('https://staging.altacucina.co/v1/collections/byslug/primi-piatti-veloci-2/?expand=items');
+  const response = await fetch('https://staging.altacucina.co/v1/collections/byslug/primi-piatti-veloci-2/?expand=items,items.creator,creator');
   const data = await response.json();
   return data;
 });
