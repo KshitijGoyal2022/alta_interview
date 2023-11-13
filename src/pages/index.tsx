@@ -11,8 +11,6 @@ const Home = () => {
         <Header />
         <MiddleBar />
         <FoodSection />
-        <FoodCard />
-
     </main>
   )
 }

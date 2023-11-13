@@ -1,39 +1,38 @@
 import Image from 'next/image'
 
 import styled from 'styled-components'
+import Bookmark from './Bookmark';
+
+
+interface FoodCardProps{
+    imgUrl: string,
+    title: string,
+}
 
 const CardContainer = styled.div`
-   background-image: url('/agrumi.png');
+   background-image: url(${props => props.imgUrl});
    background-size: cover;
    background-position: center;
    background-repeat: no-repeat;
 
    height: 300px;
-   width: 250px;
+   width: 200px;
    border-radius: 20px;
 
-   margin : 20px;
+   margin : 25px;   
 
 `
 
-
-const FoodCard = () => {
+const FoodCard = ({imgUrl, title}:FoodCardProps) => {
   
     return (
         <div>
-            <CardContainer>
-
+            <CardContainer imgUrl={imgUrl}>
+                <Bookmark />
             </CardContainer>
-            
+            <p>{title}</p>
+
         </div>
     );
 };
 export default FoodCard
-
-
-// {apiData && apiData.map(item => (
-//     <div key={item.id}>
-//       {/* Replace 'item.property' with actual properties from your data */}
-//       <h2>{item.property}</h2>
-//     </div>
-//   ))}
