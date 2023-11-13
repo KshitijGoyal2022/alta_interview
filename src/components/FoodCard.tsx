@@ -2,21 +2,24 @@ import Image from 'next/image'
 
 import styled from 'styled-components'
 import {BsBookmark} from 'react-icons/bs'
+import {MdVerified} from 'react-icons/md'
 
 const RowContainer = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
+    
 
     @media (max-width: 768px) {
         flex-direction: column;
     }
 `
 
-
 interface FoodCardProps{
     cardUrl: string,
     title: string,
     mugshotUrl: string,
+    userName: string,
 }
 
 const CardContainer = styled.div`
@@ -51,10 +54,19 @@ const ProfilePicture = styled.div`
    border-radius: 50%;
 
    margin-left: 15px;
+`
+const UserNameStyle = styled.div`
 
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: grey;
+    margin-right: 10px;
+    margin-left: 5px;
+    
 `
 
-const FoodCard = ({cardUrl, title, mugshotUrl}:FoodCardProps) => {
+const FoodCard = ({cardUrl, title, mugshotUrl,userName}:FoodCardProps) => {
   
     return (
         <div>
@@ -64,8 +76,12 @@ const FoodCard = ({cardUrl, title, mugshotUrl}:FoodCardProps) => {
                 {title}
             </TitleContainer>
 
-            <ProfilePicture mugshotUrl ={mugshotUrl} />
-
+           <RowContainer>
+                <ProfilePicture mugshotUrl ={mugshotUrl} />
+                <UserNameStyle>{userName}</UserNameStyle>
+                <MdVerified color="dodgerblue" size={14}/>
+           </RowContainer>
+            
         </div>
     );
 };
