@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import {BsBookmark} from 'react-icons/bs'
 import {MdVerified} from 'react-icons/md'
 
-const RowContainer = styled.div`
+export const RowContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -44,7 +44,7 @@ const TitleContainer = styled.div`
     min-height: 80px;
 `
 
-const ProfilePicture = styled.div`
+export const ProfilePicture = styled.div`
    background-image: url(${props => props.mugshotUrl});
    background-size: cover;
    background-position: center;

@@ -82,7 +82,7 @@ const ResponsiveImage = styled(Image)`
     height: auto;
 `;
 
-//Arranves the elements in a row
+//Arranges the elements in a row
 const RowContainer = styled.div`
     display: flex;
     flex-direction: row;

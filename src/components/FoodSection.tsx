@@ -6,6 +6,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import {fetchApiData} from '../redux/store/actions/apiDataSlice'
 import { fetchCreatorData } from "@/redux/store/actions/creatorInfoDataSlice"
 
+
 const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -17,32 +18,11 @@ const GridContainer = styled.div`
 
 
 const FoodSection = () => {
-  const dispatch = useDispatch();
-  const { status, data } = useSelector((state) => state.apiData);
-  // const {creatorStatus, creatorData } = useSelector((creatorState)=>creatorState.creatorInfoData)
-
-    useEffect(() => {
-      try {
-        dispatch(fetchApiData());
-      } catch (error) {
-        console.error(error);
-      }
-    }, []);
-
+  
   const foodData = useSelector((state) => {
     return state.apiData
   })
   
-  
-  while (status === 'loading' || status === 'idle' ) {
-    return <div>Loading...</div>;
-  }
-
-  // if (status === 'succeeded' && foodData.data && foodData.data.items) {
-  //   foodData.data.items.forEach((ele)=>{
-  //     dispatch(fetchCreatorData(ele.creator));
-  //   })}
-
   return (
       <div>
         <GridContainer>
