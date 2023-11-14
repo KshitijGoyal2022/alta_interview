@@ -19,7 +19,7 @@ const GridContainer = styled.div`
     left: 2%; 
     right: 2%; 
     bottom: 0;
-    border-bottom: 2px solid #A9A9A9;
+    border-bottom: 1px solid #A9A9A9;
   }
 
   @media (max-width: 768px) {
