@@ -9,9 +9,9 @@ export const RowContainer = styled.div`
     flex-direction: row;
     align-items: center;
     
-
-    @media (max-width: 768px) {
-        flex-direction: column;
+    &:hover {
+        opacity: 0.8;
+        cursor: pointer;
     }
 `
 
@@ -21,9 +21,15 @@ interface FoodCardProps{
     mugshotUrl: string,
     userName: string,
     isVerified : boolean;
+    bookmarkNo : number;
 }
 
+const CardWrapper = styled.div`
+  position: relative;
+`;
+
 const CardContainer = styled.div`
+   position: relative;
    background-image: url(${props => props.cardUrl});
    background-size: cover;
    background-position: center;
@@ -33,8 +39,16 @@ const CardContainer = styled.div`
    width: 200px;
    border-radius: 20px;
 
-   margin : 25px 25px 10px 25px;   
+   margin : 25px 25px 10px 25px; 
 
+   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+   &:hover {
+     transform: scale(1.1);
+     opacity: 0.8;
+     cursor: pointer;
+   }
+    
 `
 
 const TitleContainer = styled.div`
@@ -52,9 +66,12 @@ export const ProfilePicture = styled.div`
 
    height: 30px;
    width: 30px;
+   margin-left: 25px;
+
+   border: 1px solid #A9A9A9;
    border-radius: 50%;
 
-   margin-left: 25px;
+
 `
 const UserNameStyle = styled.div`
 
@@ -64,14 +81,39 @@ const UserNameStyle = styled.div`
     color: grey;
     margin-right: 10px;
     margin-left: 8px;
-    
+`
+const BookMarkStyle = styled.div`
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    bottom: 10px;
+    left: 30px;
+
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 35px;
+    padding: 10px;
+`
+const BookmarkNumberStyle = styled.div`
+    color: white;
+    margin-left: 5px;
 `
 
-const FoodCard = ({cardUrl, title, mugshotUrl,userName, isVerified}:FoodCardProps) => {
+const FoodCard = ({cardUrl, title, mugshotUrl,userName, isVerified, bookmarkNo}:FoodCardProps) => {
   
     return (
         <div>
-            <CardContainer cardUrl={cardUrl} />
+            <CardWrapper>
+                <CardContainer cardUrl={cardUrl} />
+                <BookMarkStyle>
+                    <div>
+                        <BsBookmark color="white" size={12}/>
+                    </div>
+                    <BookmarkNumberStyle>
+                        {bookmarkNo}
+                    </BookmarkNumberStyle>
+                </BookMarkStyle>
+            </CardWrapper>
+            
 
             <TitleContainer>
                 {title}
@@ -82,8 +124,7 @@ const FoodCard = ({cardUrl, title, mugshotUrl,userName, isVerified}:FoodCardProp
                 <UserNameStyle>{userName}</UserNameStyle>
                 {isVerified && <MdVerified color="dodgerblue" size={14}/>}
                 
-           </RowContainer>
-            
+           </RowContainer>  
         </div>
     );
 };

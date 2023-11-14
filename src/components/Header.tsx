@@ -35,6 +35,14 @@ const AcrumiImageContainer = styled.div`
     margin-left: 10px; 
     border-radius: 10px;
 
+      
+
+   &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+
+
 `
 //Contains the info on the right side of the header
 const ElipsisIcon = styled.div`

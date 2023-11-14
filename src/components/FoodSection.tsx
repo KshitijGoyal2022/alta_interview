@@ -18,7 +18,7 @@ const GridContainer = styled.div`
 
 
 const FoodSection = () => {
-  
+
   const foodData = useSelector((state) => {
     return state.apiData
   })
@@ -33,7 +33,8 @@ const FoodSection = () => {
                   cardUrl={ele.image.original.url} 
                   mugshotUrl={ele.creator.mugshot} 
                   userName={ele.creator.name}
-                  isVerified={ele.creator.verified} />
+                  isVerified={ele.creator.verified}
+                  bookmarkNo={ele.bookmarks_count} />
   
         ))}
         </GridContainer >

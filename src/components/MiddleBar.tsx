@@ -31,6 +31,15 @@ const MiddleBarContainer = styled.div`
     border-bottom: 1px solid #A9A9A9;
   }
 `;
+
+const CreatorNameStyle = styled.div`
+  color: grey;
+  font-weight: bold;
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 10px;
+
+`
 const MiddleBar = () => {
   
   const foodData = useSelector((state) => {
@@ -43,7 +52,9 @@ const MiddleBar = () => {
       <div>
         <RowContainer>
           <ProfilePicture mugshotUrl = {foodData.data.creator.mugshot} />
-          {foodData.data.creator.username}
+          <CreatorNameStyle>
+            {foodData.data.creator.name}
+          </CreatorNameStyle>
         </RowContainer>
       
         <MiddleBarContainer />
