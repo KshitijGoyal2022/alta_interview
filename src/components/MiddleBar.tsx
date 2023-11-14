@@ -51,6 +51,10 @@ const MiddleBar = () => {
 
       <div>
         <RowContainer>
+          <CreatorNameStyle>
+            di
+          </CreatorNameStyle>
+          
           <ProfilePicture mugshotUrl = {foodData.data.creator.mugshot} />
           <CreatorNameStyle>
             {foodData.data.creator.name}
