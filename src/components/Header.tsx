@@ -99,22 +99,18 @@ const RowContainer = styled.div`
         flex-direction: column;
     }
 `
-//Note: I need to rename this component - time to sleep now
-const RowEndContainer = styled.div`
+const RecipePathContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-right: 10px;
 `
 
-//Note: I need to rename this component - time to sleep now
-const SmallContainer = styled.div`
+const PrivataLockContainer = styled.div`
     color: grey;
     margin-right: 20px;
     margin-left: 20px;
 `
-
-
 
 const Header = () => {
   return (
@@ -126,7 +122,7 @@ const Header = () => {
         <div>
 
             
-                <RowEndContainer>
+                <RecipePathContainer>
                     <div>
                         <RowContainer>
                             <FoodCollectionTitle>
@@ -142,7 +138,7 @@ const Header = () => {
                             <AiOutlineEllipsis size={25} color="grey"/>
                         </ElipsisIcon>
                     </div>
-                </RowEndContainer>
+                </RecipePathContainer>
             
 
             <CenteredContentContainer>
@@ -150,17 +146,17 @@ const Header = () => {
                     Ricette con gli agrumi
                 </RecipeTitle>
                 <RowContainer>
-                    <SmallContainer>
+                    <PrivataLockContainer>
                         <BiFork color="grey" />
                         12 Ricette
-                    </SmallContainer>
+                    </PrivataLockContainer>
                     <div>
                         <FaCircle size={4} color="grey" />
                     </div>
-                    <SmallContainer>
+                    <PrivataLockContainer>
                         <AiOutlineLock color="grey" />
                         Privata
-                    </SmallContainer>
+                    </PrivataLockContainer>
                 </RowContainer>
             </CenteredContentContainer>
         </div>

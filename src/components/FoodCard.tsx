@@ -88,8 +88,8 @@ const BookMarkStyle = styled.div`
     position: absolute;
     display: flex;
     flex-direction: row;
-    bottom: 10px;
-    left: 30px;
+    bottom: 9px;
+    left: 33px;
 
     background: rgba(0, 0, 0, 0.6);
     border-radius: 35px;
