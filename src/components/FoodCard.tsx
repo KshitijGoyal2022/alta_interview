@@ -55,7 +55,9 @@ const TitleContainer = styled.div`
     font-weight: bold;
     font-family: 'Roboto', sans-serif;
     margin-left: 25px; 
-    min-height: 80px;
+    margin-bottom: 15px;
+    max-width: 200px;
+    
 `
 
 export const ProfilePicture = styled.div`
@@ -92,6 +94,12 @@ const BookMarkStyle = styled.div`
     background: rgba(0, 0, 0, 0.6);
     border-radius: 35px;
     padding: 10px;
+
+    &:hover {
+        background: rgba(0, 0, 0, 1);
+        cursor: pointer;
+      }
+
 `
 const BookmarkNumberStyle = styled.div`
     color: white;
