@@ -17,6 +17,11 @@ const GridContainer = styled.div`
 `;
 
 const FoodSection = () => {
+  const { data, status, error } = useSelector((state:any) => state.apiData);
+
+  if (status === 'failed') {
+    return <div>Error: {error}</div>;
+  }
 
   const foodData = useSelector((state:any) => {
     return state.apiData
