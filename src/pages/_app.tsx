@@ -5,11 +5,12 @@ import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchApiData } from '../redux/store/actions/apiDataSlice';
+import { AppDispatch } from '../redux/store';
 
 const GlobalStyle = createGlobalStyle``;
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { status, data } = useSelector((state:any) => state.apiData);
 
   useEffect(() => {

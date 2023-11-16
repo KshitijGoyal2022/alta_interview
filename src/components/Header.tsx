@@ -108,7 +108,7 @@ const PrivataLockContainer = styled.div`
     margin-right: 20px;
     margin-left: 20px;
 `
-
+//Header component
 const Header = () => {
   return (
     <GridContainer> 
@@ -121,7 +121,7 @@ const Header = () => {
         
         {/* Right Hand Size - Recipe Info */}
         <div>
-            
+
             {/* Recipe Path - Raccolte / Ricette con gli agrumi */}
             <RecipePathContainer>
                 <div>

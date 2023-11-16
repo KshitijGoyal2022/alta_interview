@@ -17,7 +17,6 @@ interface StyleProps {
 
   }
 
-
 export const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
