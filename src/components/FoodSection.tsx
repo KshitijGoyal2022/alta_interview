@@ -19,14 +19,14 @@ const GridContainer = styled.div`
 
 const FoodSection = () => {
 
-  const foodData = useSelector((state) => {
+  const foodData = useSelector((state:any) => {
     return state.apiData
   })
   
   return (
       <div>
         <GridContainer>
-          {foodData && foodData.data.items.map((ele)=>(
+          {foodData && foodData.data.items.map((ele:any)=>(
                 <FoodCard 
                   key={ele.id} 
                   title={ele.title} 

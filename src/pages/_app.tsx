@@ -10,19 +10,46 @@ const GlobalStyle = createGlobalStyle``;
 
 function MyApp({ Component, pageProps }: AppProps) {
   const dispatch = useDispatch();
-  const { status, data } = useSelector((state) => state.apiData);
+  const { status, data } = useSelector((state:any) => state.apiData);
 
   useEffect(() => {
-    try {
-      dispatch(fetchApiData());
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+    const fetchData = async () => {
+      try {
+        await dispatch(fetchApiData());
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array to run the effect only once
 
   if (status === 'loading' || status === 'idle') {
     return <div>Loading...</div>;
   }
+
+  //const dispatch = useDispatch();
+  // const { status, data } = useSelector((state) => state.apiData);
+  // const { recipeStatus, recipeData } = useSelector((recipeState) => recipeState.creatorInfoData);
+
+  // const foodData = useSelector((foodstate) => foodstate.apiData);
+
+  // const fetchAllData = () => {
+  //   dispatch(fetchApiData());
+  // };
+
+  // useEffect(() => {
+  //   fetchAllData();
+
+  //   // Use optional chaining to avoid errors if any part of the path is null or undefined
+  //   foodData?.data?.items?.forEach((ele) => {
+  //     dispatch(fetchCreatorData(ele.creator));
+  //   });
+  // }, []); // Add foodData as a dependency
+
+  // if (status === 'loading' || status === 'idle') {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <>

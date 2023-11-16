@@ -30,28 +30,29 @@ const initialState: ApiDataState = {
   error: null,
 };
 
-// Action
+// Action -> Fetching all the data from the Altacucina API
 export const fetchApiData = createAsyncThunk('foodItems', async () => {
   const response = await fetch('https://staging.altacucina.co/v1/collections/byslug/primi-piatti-veloci-2/?expand=items,items.creator,creator');
   const data = await response.json();
   return data;
 });
 
+//Creating the slice
 const apiDataSlice = createSlice({
   name: 'apiData',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchApiData.pending, (state) => {
-        state.status = 'loading';
+      .addCase(fetchApiData.pending, (state) => { 
+        state.status = 'loading'; //Data fetching is in progress
       })
       .addCase(fetchApiData.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = 'succeeded'; //Data fetched successfully
         state.data = action.payload;
       })
       .addCase(fetchApiData.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = 'failed'; //Data fetching failed
         state.error = action.payload;
       });
   },

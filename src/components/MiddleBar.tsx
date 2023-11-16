@@ -42,7 +42,7 @@ const CreatorNameStyle = styled.div`
 `
 const MiddleBar = () => {
   
-  const foodData = useSelector((state) => {
+  const foodData = useSelector((state:any) => {
     return state.apiData
   })
 
