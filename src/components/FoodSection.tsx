@@ -16,7 +16,6 @@ const GridContainer = styled.div`
     }
 `;
 
-
 const FoodSection = () => {
 
   const foodData = useSelector((state:any) => {

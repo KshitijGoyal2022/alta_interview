@@ -35,17 +35,14 @@ const AcrumiImageContainer = styled.div`
     margin-left: 10px; 
     border-radius: 10px;
 
-      
-
    &:hover {
     opacity: 0.9;
     cursor: pointer;
   }
 
-
 `
 //Contains the info on the right side of the header
-const ElipsisIcon = styled.div`
+const EllipsisIcon = styled.div`
     margin-top: 25px;
     margin-right: 25px;
     height: 10px;
@@ -115,32 +112,36 @@ const PrivataLockContainer = styled.div`
 const Header = () => {
   return (
     <GridContainer> 
+
+        {/* Left Hand Size - Blue Acrumi Image */}
         <AcrumiImageContainer>
             <ResponsiveImage src="/agrumi.png" width={650} height={650} alt="acrumi logo" />
         </AcrumiImageContainer >
-
+            
+        
+        {/* Right Hand Size - Recipe Info */}
         <div>
-
             
-                <RecipePathContainer>
-                    <div>
-                        <RowContainer>
-                            <FoodCollectionTitle>
-                                <p>RACCOLTE</p> 
-                            </FoodCollectionTitle>
-                            <RecipeSubtitle>
-                                <p>/  RICETTE CON GLI AGRUMI</p>
-                            </RecipeSubtitle>
-                        </RowContainer>
-                    </div>
-                    <div>
-                        <ElipsisIcon >
-                            <AiOutlineEllipsis size={25} color="grey"/>
-                        </ElipsisIcon>
-                    </div>
-                </RecipePathContainer>
-            
-
+            {/* Recipe Path - Raccolte / Ricette con gli agrumi */}
+            <RecipePathContainer>
+                <div>
+                    <RowContainer>
+                        <FoodCollectionTitle>
+                            <p>RACCOLTE</p> 
+                        </FoodCollectionTitle>
+                        <RecipeSubtitle>
+                            <p>/  RICETTE CON GLI AGRUMI</p>
+                        </RecipeSubtitle>
+                    </RowContainer>
+                </div>
+                <div>
+                    <EllipsisIcon >
+                        <AiOutlineEllipsis size={25} color="grey"/>
+                    </EllipsisIcon>
+                </div>
+            </RecipePathContainer>
+        
+            {/* Recipe Title - Ricette con gli agrumi */}
             <CenteredContentContainer>
                 <RecipeTitle>
                     Ricette con gli agrumi
@@ -160,6 +161,7 @@ const Header = () => {
                 </RowContainer>
             </CenteredContentContainer>
         </div>
+
     </GridContainer>
   ) 
 }

@@ -24,7 +24,6 @@ export const RowContainer = styled.div`
   align-items: center;
 
   &:hover {
-    opacity: 0.8;
     cursor: pointer;
   }
 `;
@@ -40,8 +39,8 @@ export const CardContainer = styled.div<StyleProps>`
   background-position: center;
   background-repeat: no-repeat;
 
-  height: 230px;
-  width: 200px;
+  height: 290px;
+  width: 230px;
   border-radius: 20px;
 
   margin: 25px 25px 10px 25px;
@@ -60,7 +59,7 @@ export const TitleContainer = styled.div`
   font-family: 'Roboto', sans-serif;
   margin-left: 25px;
   margin-bottom: 15px;
-  max-width: 200px;
+  max-width: 230px;
 `;
 
 export const ProfilePicture = styled.div<StyleProps>`
