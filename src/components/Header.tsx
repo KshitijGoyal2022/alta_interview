@@ -30,7 +30,7 @@ const GridContainer = styled.div`
     }
 `;
 
-//Contains the Blue Acrumi Image
+//Styles the Blue Acrumi Image
 const AcrumiImageContainer = styled.div`
     margin-left: 10px; 
     border-radius: 10px;
@@ -41,15 +41,23 @@ const AcrumiImageContainer = styled.div`
   }
 
 `
-//Contains the info on the right side of the header
+//Styles the recipe path on the right side of the header
+const RecipePathContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 10px;
+`
+
+//Styles the ellipsis icon on the right side of the header
 const EllipsisIcon = styled.div`
     margin-top: 25px;
     margin-right: 25px;
     height: 10px;
     width: 10px;
-    
+        
 `
-//Contains the title of an entire abstract food collection - in this case (Raccolte - Harvested)
+//Styles the title of an entire abstract food collection - in this case (Raccolte)
 const FoodCollectionTitle = styled.div`
     font-size: 15px;
     color: #A9A9A9;
@@ -58,7 +66,7 @@ const FoodCollectionTitle = styled.div`
     margin-top: 10px;
     margin-right: 10px;
 `
-//Contains the title of a recipe in the small path after the food collection title - in this case (Ricette con gli agrumi - Recipes with citrus fruits)
+//Contains the title of a recipe in the small path after the food collection title - in this case (Ricette con gli agrumi)
 const RecipeSubtitle = styled.div`
     font-size: 15px;
     color: #808080;
@@ -66,7 +74,7 @@ const RecipeSubtitle = styled.div`
     font-family: 'Arial', sans-serif;
     margin-top: 10px;
 `
-//Contains the title of a recipe as a header - in this case (Ricette con gli agrumi - Recipes with citrus fruits)
+//Contains the title of a recipe as a header - in this case (Ricette con gli agrumi)
 const RecipeTitle = styled.div`
     font-size: 40px;
     font-weight: bold;
@@ -91,18 +99,9 @@ const ResponsiveImage = styled(Image)`
 const RowContainer = styled.div`
     display: flex;
     flex-direction: row;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-    }
-`
-const RecipePathContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-right: 10px;
 `
 
+//Styles the fork and lock icon and the recipe number
 const PrivataLockContainer = styled.div`
     color: grey;
     margin-right: 20px;

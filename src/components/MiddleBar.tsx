@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import { ProfilePicture } from "./FoodCard"
 
+//Styled component for a flex container with a row direction
 const RowContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -12,13 +13,16 @@ const RowContainer = styled.div`
 
     margin-top: 10px;
     margin-bottom: 10px;
-    
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-    }
 `
-
+// Styled component for the creator's name
+const CreatorNameStyle = styled.div`
+  color: grey;
+  font-weight: bold;
+  font-size: 17px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 10px;
+`
+//Draws the line that divides the middle section from the food section. 
 const MiddleBarContainer = styled.div`
   position: relative;
 
@@ -31,23 +35,17 @@ const MiddleBarContainer = styled.div`
     border-bottom: 1px solid #A9A9A9;
   }
 `;
-
-const CreatorNameStyle = styled.div`
-  color: grey;
-  font-weight: bold;
-  font-size: 17px;
-  font-family: 'Roboto', sans-serif;
-  margin-left: 10px;
-
-`
 const MiddleBar = () => {
 
+  // Retrieving data, status, and error from the Redux store
   const { data, status, error } = useSelector((state:any) => state.apiData);
 
+  // Handling errors if the API call fails
   if (status === 'failed') {
     return <div>Error:  {error}</div>;
   }
   
+  // Retrieving food data from the Redux store
   const foodData = useSelector((state:any) => {
     return state.apiData
   })
@@ -56,18 +54,26 @@ const MiddleBar = () => {
   return (
 
       <div>
+        {/* Container for the creator's information */}
         <RowContainer>
+          
           <CreatorNameStyle>
             di
           </CreatorNameStyle>
-          
-          <ProfilePicture mugshotUrl = {foodData.data.creator.mugshot} />
+      
+          {/* Displaying the profile picture of the creator */}
+          <ProfilePicture mugshotUrl = {foodData.data.creator.mugshot} /> 
+
+          {/* Displaying the name of the creator */}
           <CreatorNameStyle>
             {foodData.data.creator.name}
           </CreatorNameStyle>
+
         </RowContainer>
       
-        <MiddleBarContainer />
+        {/* Container for the middle bar that visually divides sections */}
+        <MiddleBarContainer /> 
+
     </div>
   )
 }

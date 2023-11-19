@@ -1,28 +1,24 @@
 import FoodCard from "./FoodCard"
 import styled from 'styled-components'
-
-import {useEffect, useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {fetchApiData} from '../redux/store/actions/apiDataSlice'
-import { fetchCreatorData } from "@/redux/store/actions/creatorInfoDataSlice"
+
 
 
 const GridContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-
-    @media (max-width: 768px) {
-        grid-template-columns: 1fr;
-    }
 `;
 
 const FoodSection = () => {
+  // Retrieving data, status, and error from the Redux store
   const { data, status, error } = useSelector((state:any) => state.apiData);
 
+  // Handling errors if the API call fails
   if (status === 'failed') {
     return <div>Error: {error}</div>;
   }
 
+  // Retrieving food data from the Redux store
   const foodData = useSelector((state:any) => {
     return state.apiData
   })
@@ -30,6 +26,7 @@ const FoodSection = () => {
   return (
       <div>
         <GridContainer>
+          {/* Generating the foodcards */}
           {foodData && foodData.data.items.map((ele:any)=>(
                 <FoodCard 
                   key={ele.id} 

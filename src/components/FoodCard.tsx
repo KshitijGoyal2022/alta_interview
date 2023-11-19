@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import {BsBookmark} from 'react-icons/bs'
 import {MdVerified} from 'react-icons/md'
 
+// Interface defining the props for the FoodCard component
 interface FoodCardProps{
     cardUrl: string,
     title: string,
@@ -11,12 +12,13 @@ interface FoodCardProps{
     bookmarkNo : number;
 }
 
+// Interface defining additional style-related props for the styled components
 interface StyleProps {
     cardUrl?: string;
     mugshotUrl?: string;
 
   }
-
+// Styled component for a flex container with a row direction
 export const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -27,10 +29,12 @@ export const RowContainer = styled.div`
   }
 `;
 
+// Styled component for the food card such that bookmark placed on top of the card
 export const CardWrapper = styled.div`
   position: relative;
 `;
 
+// Styled component for the food card with dynamic background image
 export const CardContainer = styled.div<StyleProps>`
   position: relative;
   background-image: url(${(props) => props.cardUrl});
@@ -53,7 +57,8 @@ export const CardContainer = styled.div<StyleProps>`
   }
 `;
 
-export const TitleContainer = styled.div`
+// Styled component for the recipe title
+export const RecipeTitle = styled.div`
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
   margin-left: 25px;
@@ -61,6 +66,7 @@ export const TitleContainer = styled.div`
   max-width: 230px;
 `;
 
+// Styled component for the profile picture
 export const ProfilePicture = styled.div<StyleProps>`
   background-image: url(${(props) => props.mugshotUrl});
   background-size: cover;
@@ -75,6 +81,7 @@ export const ProfilePicture = styled.div<StyleProps>`
   border-radius: 50%;
 `;
 
+// Styled component for the username
 export const UserNameStyle = styled.div`
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
@@ -84,6 +91,7 @@ export const UserNameStyle = styled.div`
   margin-left: 8px;
 `;
 
+// Styled component for the bookmark section
 export const BookMarkStyle = styled.div`
   position: absolute;
   display: flex;
@@ -101,6 +109,7 @@ export const BookMarkStyle = styled.div`
   }
 `;
 
+// Styled component for the bookmark number
 export const BookmarkNumberStyle = styled.div`
   color: white;
   margin-left: 5px;
@@ -110,11 +119,12 @@ const FoodCard = ({cardUrl, title, mugshotUrl,userName, isVerified, bookmarkNo}:
   
     return (
         <div>
+
             <CardWrapper>
                 <CardContainer cardUrl={cardUrl} />
                 <BookMarkStyle>
                     <div>
-                        <BsBookmark color="white" size={12}/>
+                        <BsBookmark color="white" size={12}/> {/* Bookmark icon */}
                     </div>
                     <BookmarkNumberStyle>
                         {bookmarkNo}
@@ -123,16 +133,16 @@ const FoodCard = ({cardUrl, title, mugshotUrl,userName, isVerified, bookmarkNo}:
             </CardWrapper>
             
 
-            <TitleContainer>
+            <RecipeTitle>
                 {title}
-            </TitleContainer>
+            </RecipeTitle>
 
            <RowContainer>
                 <ProfilePicture mugshotUrl ={mugshotUrl} />
                 <UserNameStyle>{userName}</UserNameStyle>
                 {isVerified && <MdVerified color="dodgerblue" size={14}/>}
-                
            </RowContainer>  
+
         </div>
     );
 };
