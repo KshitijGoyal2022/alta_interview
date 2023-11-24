@@ -28,30 +28,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   if (status === 'loading' || status === 'idle') {
     return <div>Loading...</div>;
   }
-
-  //const dispatch = useDispatch();
-  // const { status, data } = useSelector((state) => state.apiData);
-  // const { recipeStatus, recipeData } = useSelector((recipeState) => recipeState.creatorInfoData);
-
-  // const foodData = useSelector((foodstate) => foodstate.apiData);
-
-  // const fetchAllData = () => {
-  //   dispatch(fetchApiData());
-  // };
-
-  // useEffect(() => {
-  //   fetchAllData();
-
-  //   // Use optional chaining to avoid errors if any part of the path is null or undefined
-  //   foodData?.data?.items?.forEach((ele) => {
-  //     dispatch(fetchCreatorData(ele.creator));
-  //   });
-  // }, []); // Add foodData as a dependency
-
-  // if (status === 'loading' || status === 'idle') {
-  //   return <div>Loading...</div>;
-  // }
-
   return (
     <>
       <GlobalStyle />

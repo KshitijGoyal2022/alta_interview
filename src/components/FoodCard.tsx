@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import {BsBookmark} from 'react-icons/bs'
+import { IoMdBookmark } from "react-icons/io";
 import {MdVerified} from 'react-icons/md'
+
+
+import {useState} from 'react'
 
 // Interface defining the props for the FoodCard component
 interface FoodCardProps{
@@ -9,7 +13,7 @@ interface FoodCardProps{
     mugshotUrl: string,
     userName: string,
     isVerified : boolean;
-    bookmarkNo : number;
+    initialBookmarkNo : number;
 }
 
 // Interface defining additional style-related props for the styled components
@@ -115,16 +119,28 @@ export const BookmarkNumberStyle = styled.div`
   margin-left: 5px;
 `;
 
-const FoodCard = ({cardUrl, title, mugshotUrl,userName, isVerified, bookmarkNo}:FoodCardProps) => {
+const FoodCard = ({cardUrl, title, mugshotUrl,userName, isVerified, initialBookmarkNo}:FoodCardProps) => {
+  
+  const [bookmark, setBookmark] = useState(false);
+  const [bookmarkNo, setBookmarkNo] = useState(initialBookmarkNo);
+
+  const handleBookmarkClick = () => {
+    if (bookmark) {
+      setBookmarkNo(bookmarkNo - 1);
+    } else {
+      setBookmarkNo(bookmarkNo + 1);
+    }
+    setBookmark(!bookmark);
+  };
   
     return (
         <div>
 
             <CardWrapper>
                 <CardContainer cardUrl={cardUrl} />
-                <BookMarkStyle>
+                <BookMarkStyle onClick={handleBookmarkClick}>
                     <div>
-                        <BsBookmark color="white" size={12}/> {/* Bookmark icon */}
+                        {bookmark? <IoMdBookmark color="white" size={15}/> : <BsBookmark color="white" size={12}/> }{/* Bookmark icon */}
                     </div>
                     <BookmarkNumberStyle>
                         {bookmarkNo}

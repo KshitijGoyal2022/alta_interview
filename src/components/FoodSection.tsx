@@ -35,7 +35,7 @@ const FoodSection = () => {
                   mugshotUrl={ele.creator.mugshot} 
                   userName={ele.creator.name}
                   isVerified={ele.creator.verified}
-                  bookmarkNo={ele.bookmarks_count} />
+                  initialBookmarkNo={ele.bookmarks_count} />
   
         ))}
         </GridContainer >
